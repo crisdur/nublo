@@ -1,0 +1,18 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part '{{snakeCase name}}.freezed.dart';
+
+@freezed
+abstract class {{pascalCase name}} with _${{pascalCase name}} {
+  const factory {{pascalCase name}}({
+    @Default('') String id,
+    required String displayName,
+    String? description,
+    String? address,
+    String? localizedCategory,
+    String? phoneNumber,
+    String? website,
+    double? latitude,
+    double? longitude,
+  }) = _{{pascalCase name}};
+} 

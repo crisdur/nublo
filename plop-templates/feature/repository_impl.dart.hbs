@@ -1,0 +1,33 @@
+import 'package:dartz/dartz.dart';
+import '../../../../core/error/exception.dart';
+import '../../../../core/error/failure.dart';
+import '../../../../core/network/network_info/network_info.dart';
+import '../../domain/entities/{{snakeCase name}}/{{snakeCase name}}.dart';
+import '../../domain/repositories/{{snakeCase name}}_repository.dart';
+import '../datasources/remote/{{snakeCase name}}_remote_datasource.dart';
+
+class {{pascalCase name}}RepositoryImpl implements {{pascalCase name}}Repository {
+  const {{pascalCase name}}RepositoryImpl({
+    required this.remoteDataSource,
+    required this.networkInfo,
+  });
+
+  final {{pascalCase name}}RemoteDataSource remoteDataSource;
+  final NetworkInfo networkInfo;
+
+  @override
+  Future<Either<Failure, List<{{pascalCase name}}>>> getAll{{pascalCase name}}s() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final items = await remoteDataSource.getAll{{pascalCase name}}s();
+        return Right(items);
+      } on ServerException catch (e) {
+        return Left(ServerFailure(e.message));
+      } on NetworkException catch (e) {
+        return Left(NetworkFailure(e.message));
+      }
+    } else {
+      return const Left(NetworkFailure());
+    }
+  }
+} 

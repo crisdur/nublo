@@ -1,0 +1,38 @@
+import 'package:injectable/injectable.dart';
+import '../../../../core/network/network_info/network_info.dart';
+import '../data/datasources/remote/{{snakeCase name}}_remote_datasource.dart';
+import '../data/repositories/{{snakeCase name}}_repository_impl.dart';
+import '../domain/repositories/{{snakeCase name}}_repository.dart';
+import '../domain/usecases/get_all_{{snakeCase name}}s.dart';
+import '../presentation/cubit/{{snakeCase name}}/{{snakeCase name}}_cubit.dart';
+
+@module
+abstract class {{pascalCase name}}Module {
+  @lazySingleton
+  {{pascalCase name}}RemoteDataSource provide{{pascalCase name}}RemoteDataSource() =>
+      {{pascalCase name}}RemoteDataSourceImpl();
+
+  @lazySingleton
+  {{pascalCase name}}Repository provide{{pascalCase name}}Repository(
+    {{pascalCase name}}RemoteDataSource remoteDataSource,
+    NetworkInfo networkInfo,
+  ) =>
+      {{pascalCase name}}RepositoryImpl(
+        remoteDataSource: remoteDataSource,
+        networkInfo: networkInfo,
+      );
+
+  @lazySingleton
+  GetAll{{pascalCase name}}s provideGetAll{{pascalCase name}}s(
+    {{pascalCase name}}Repository repository,
+  ) =>
+      GetAll{{pascalCase name}}s(repository);
+
+  @injectable
+  {{pascalCase name}}Cubit provide{{pascalCase name}}Cubit(
+    GetAll{{pascalCase name}}s getAll{{pascalCase name}}s,
+  ) =>
+      {{pascalCase name}}Cubit(
+        getAll{{pascalCase name}}s: getAll{{pascalCase name}}s,
+      );
+} 

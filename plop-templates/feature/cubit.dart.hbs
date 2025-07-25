@@ -1,0 +1,27 @@
+import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/error/failure.dart';
+import '../../../../../core/usecases/usecase.dart';
+import '../../../domain/entities/{{snakeCase name}}/{{snakeCase name}}.dart';
+import '../../../domain/usecases/get_all_{{snakeCase name}}s.dart';
+import '{{snakeCase name}}_state.dart';
+
+class {{pascalCase name}}Cubit extends Cubit<{{pascalCase name}}State> {
+  {{pascalCase name}}Cubit({
+    required this.getAll{{pascalCase name}}s,
+  }) : super(const {{pascalCase name}}State.initial());
+
+  final GetAll{{pascalCase name}}s getAll{{pascalCase name}}s;
+
+  Future<void> loadAll{{pascalCase name}}s() async {
+    emit(const {{pascalCase name}}State.loading());
+    
+    final Either<Failure, List<{{pascalCase name}}>> result = 
+        await getAll{{pascalCase name}}s(NoParams());
+
+    result.fold(
+      (failure) => emit({{pascalCase name}}State.error(failure.message?.toString() ?? 'Error loading {{snakeCase name}}s')),
+      (items) => emit({{pascalCase name}}State.success(items)),
+    );
+  }
+} 

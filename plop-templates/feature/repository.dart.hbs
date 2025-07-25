@@ -1,0 +1,7 @@
+import 'package:dartz/dartz.dart';
+import '../../../../core/error/failure.dart';
+import '../entities/{{snakeCase name}}/{{snakeCase name}}.dart';
+ 
+abstract class {{pascalCase name}}Repository {
+  Future<Either<Failure, List<{{pascalCase name}}>>> getAll{{pascalCase name}}s();
+} 

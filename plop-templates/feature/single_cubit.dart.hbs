@@ -1,0 +1,33 @@
+import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/constants/loading_status.dart';
+import '../../../../core/error/failure.dart';
+import '../../../../core/usecases/usecase.dart';
+import '../../domain/usecases/get_all_{{snakeCase name}}s.dart';
+import '{{snakeCase name}}_state.dart';
+
+class {{pascalCase name}}Cubit extends Cubit<{{pascalCase name}}State> {
+  {{pascalCase name}}Cubit({
+    required this.getAll{{pascalCase name}}s,
+  }) : super(const {{pascalCase name}}State());
+
+  final GetAll{{pascalCase name}}s getAll{{pascalCase name}}s;
+
+  Future<void> loadAll{{pascalCase name}}s() async {
+    emit(state.copyWith(status: LoadingStatus.loading, errorMessage: ''));
+    
+    final Either<Failure, List<{{pascalCase name}}>> result = 
+        await getAll{{pascalCase name}}s(NoParams());
+
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: LoadingStatus.error,
+        errorMessage: failure.message?.toString() ?? 'Error loading {{snakeCase name}}s',
+      )),
+      (items) => emit(state.copyWith(
+        status: LoadingStatus.loaded,
+        items: items,
+      )),
+    );
+  }
+} 

@@ -1,0 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:{{name}}/app.dart';
+import 'package:{{name}}/core/di/injection.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+    DeviceOrientation.portraitUp
+  ]);
+  configureDependencies();
+  runApp(const App());
+}

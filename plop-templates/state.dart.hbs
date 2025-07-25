@@ -1,0 +1,11 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part '{{snakeCase name}}_state.freezed.dart';
+
+@freezed
+sealed class {{pascalCase name}}State with _${{pascalCase name}}State {
+  const factory {{pascalCase name}}State.initial() = _Initial;
+  const factory {{pascalCase name}}State.loading() = _Loading;
+  const factory {{pascalCase name}}State.success(int value) = _Success;
+  const factory {{pascalCase name}}State.error(String message) = _Error;
+}

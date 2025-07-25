@@ -1,0 +1,14 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../../../core/constants/loading_status.dart';
+import '../../domain/entities/{{snakeCase name}}/{{snakeCase name}}.dart';
+
+part '{{snakeCase name}}_state.freezed.dart';
+
+@freezed
+class {{pascalCase name}}State with _${{pascalCase name}}State {
+  const factory {{pascalCase name}}State({
+    @Default(LoadingStatus.initial) LoadingStatus status,
+    @Default(<{{pascalCase name}}>[]) List<{{pascalCase name}}> items,
+    @Default('') String errorMessage,
+  }) = _{{pascalCase name}}State;
+} 

@@ -1,0 +1,16 @@
+import 'package:dartz/dartz.dart';
+import '../../../../core/error/failure.dart';
+import '../../../../core/usecases/usecase.dart';
+import '../entities/{{snakeCase name}}/{{snakeCase name}}.dart';
+import '../repositories/{{snakeCase name}}_repository.dart';
+
+class GetAll{{pascalCase name}}s extends NetworkUseCase<List<{{pascalCase name}}>, NoParams> {
+  GetAll{{pascalCase name}}s(this.repository);
+
+  final {{pascalCase name}}Repository repository;
+
+  @override
+  Future<Either<Failure, List<{{pascalCase name}}>>> execute(NoParams params) async {
+    return await repository.getAll{{pascalCase name}}s();
+  }
+} 
