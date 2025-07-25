@@ -128,11 +128,6 @@ module.exports = function (plop) {
           templateFile: "plop-templates/feature/page.dart.hbs",
           force: true,
         },
-        {
-          type: "add",
-          path: "lib/features/{{snakeCase name}}/presentation/pages/{{snakeCase name}}/widgets/.gitkeep",
-          force: true,
-        },
         // DI
         {
           type: "add",
@@ -141,7 +136,6 @@ module.exports = function (plop) {
           force: true,
         },
       ];
-
       // Add state-specific files
       if (data.stateType === "sealed") {
         actions.push({

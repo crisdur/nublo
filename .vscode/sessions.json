@@ -1,5 +1,5 @@
 {
-  "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v10/terminal-keeper.json",
+  "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v11/terminal-keeper.json",
   "theme": "tribe",
   "active": "default",
   "activateOnStartup": true,
@@ -90,27 +90,16 @@
         "icon": "symbol-class",
         "color": "terminal.ansiCyan",
         "autoExecuteCommands": false
-      }
-    ],
-    "config-tasks": [
-      {
-        "name": "Launch Icons Generate",
-        "commands": [
-          "flutter pub run flutter_launcher_icons:main -f pubspec.yaml"
-        ],
-        "icon": "symbol-color",
-        "color": "terminal.ansiBrightRed",
-        "autoExecuteCommands": false
       },
       {
-        "name": "Debug Keystore Info",
+        "name": "Generate Feature",
         "commands": [
-          "cd .. && keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android"
+          "npx plop feature"
         ],
-        "icon": "key",
-        "color": "terminal.ansiBrightYellow",
+        "icon": "symbol-module",
+        "color": "terminal.ansiYellow",
         "autoExecuteCommands": false
       }
     ]
   }
-} 
+}
