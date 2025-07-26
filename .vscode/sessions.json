@@ -1,105 +1,105 @@
 {
-  "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v11/terminal-keeper.json",
-  "theme": "tribe",
-  "active": "default",
-  "activateOnStartup": true,
-  "keepExistingTerminals": false,
-  "sessions": {
-    "default": [
-      {
-        "name": "Terminal",
-        "commands": [
-          ""
+    "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v11/terminal-keeper.json",
+    "theme": "tribe",
+    "active": "default",
+    "activateOnStartup": true,
+    "keepExistingTerminals": false,
+    "sessions": {
+        "default": [
+            {
+                "name": "Terminal",
+                "commands": [
+                    ""
+                ],
+                "icon": "terminal-view-icon",
+                "color": "terminal.ansiGreen",
+                "autoExecuteCommands": false,
+                "focus": true
+            },
+            {
+                "name": "Flutter Build Runner",
+                "commands": [
+                    "flutter pub run build_runner watch --delete-conflicting-outputs"
+                ],
+                "icon": "tools",
+                "color": "terminal.ansiBlue",
+                "autoExecuteCommands": true
+            }
         ],
-        "icon": "terminal-view-icon",
-        "color": "terminal.ansiGreen",
-        "autoExecuteCommands": false,
-        "focus": true
-      },
-      {
-        "name": "Flutter Build Runner",
-        "commands": [
-          "flutter pub run build_runner watch --delete-conflicting-outputs"
+        "ios-tasks": [
+            {
+                "name": "Clean iOS",
+                "commands": [
+                    "cd ios",
+                    "pod deintegrate",
+                    "pod install",
+                    "cd .."
+                ],
+                "icon": "trash",
+                "color": "terminal.ansiRed",
+                "autoExecuteCommands": false
+            },
+            {
+                "name": "Build iOS",
+                "commands": [
+                    "flutter build ios"
+                ],
+                "icon": "device-mobile",
+                "color": "terminal.ansiGreen",
+                "autoExecuteCommands": false
+            }
         ],
-        "icon": "tools",
-        "color": "terminal.ansiBlue",
-        "autoExecuteCommands": true
-      }
-    ],
-    "ios-tasks": [
-      {
-        "name": "Clean iOS",
-        "commands": [
-          "cd ios",
-          "pod deintegrate",
-          "pod install",
-          "cd .."
+        "android-tasks": [
+            {
+                "name": "Build Android",
+                "commands": [
+                    "flutter build apk"
+                ],
+                "icon": "device-mobile",
+                "color": "terminal.ansiGreen",
+                "autoExecuteCommands": false
+            }
         ],
-        "icon": "trash",
-        "color": "terminal.ansiRed",
-        "autoExecuteCommands": false
-      },
-      {
-        "name": "Build iOS",
-        "commands": [
-          "flutter build ios"
+        "flutter-tasks": [
+            {
+                "name": "Flutter Clean",
+                "commands": [
+                    "flutter clean",
+                    "flutter pub get"
+                ],
+                "icon": "refresh",
+                "color": "terminal.ansiMagenta",
+                "autoExecuteCommands": false
+            },
+            {
+                "name": "Flutter Run",
+                "commands": [
+                    "flutter run"
+                ],
+                "icon": "play",
+                "color": "terminal.ansiGreen",
+                "autoExecuteCommands": false
+            }
         ],
-        "icon": "device-mobile",
-        "color": "terminal.ansiGreen",
-        "autoExecuteCommands": false
-      }
-    ],
-    "android-tasks": [
-      {
-        "name": "Build Android",
-        "commands": [
-          "flutter build apk"
-        ],
-        "icon": "device-mobile",
-        "color": "terminal.ansiGreen",
-        "autoExecuteCommands": false
-      }
-    ],
-    "flutter-tasks": [
-      {
-        "name": "Flutter Clean",
-        "commands": [
-          "flutter clean",
-          "flutter pub get"
-        ],
-        "icon": "refresh",
-        "color": "terminal.ansiMagenta",
-        "autoExecuteCommands": false
-      },
-      {
-        "name": "Flutter Run",
-        "commands": [
-          "flutter run"
-        ],
-        "icon": "play",
-        "color": "terminal.ansiGreen",
-        "autoExecuteCommands": false
-      }
-    ],
-    "templates": [
-      {
-        "name": "Generate Cubit",
-        "commands": [
-          "npx plop cubic"
-        ],
-        "icon": "symbol-class",
-        "color": "terminal.ansiCyan",
-        "autoExecuteCommands": false
-      },
-      {
-        "name": "Generate Feature",
-        "commands": [
-          "npx plop feature"
-        ],
-        "icon": "symbol-module",
-        "color": "terminal.ansiYellow",
-        "autoExecuteCommands": false
-      }
-    ]
-  }
+        "templates": [
+            {
+                "name": "Generate Cubit",
+                "commands": [
+                    "npx plop cubic"
+                ],
+                "icon": "symbol-class",
+                "color": "terminal.ansiCyan",
+                "autoExecuteCommands": false
+            },
+            {
+                "name": "Generate Feature",
+                "commands": [
+                    "npx plop feature"
+                ],
+                "icon": "symbol-module",
+                "color": "terminal.ansiYellow",
+                "autoExecuteCommands": false
+            }
+        ]
+    }
 }

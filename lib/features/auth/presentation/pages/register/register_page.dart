@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart'; 
+import 'package:get_it/get_it.dart';
+import 'package:nublo/core/constants/app_colors.dart'; 
+import 'package:nublo/core/widgets/appbar/custom_app_bar.dart';
 import '../../cubit/auth/auth_cubit.dart';
 import '../../cubit/auth/auth_state.dart';
 
@@ -24,12 +26,22 @@ class _AuthView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Register')),
-      body: BlocBuilder<AuthCubit, AuthState>(
-        builder: (context, state) {
-          // Aquí podrías reaccionar a estados de carga o error durante el registro
-          return const _RegisterForm();
-        },
+      extendBodyBehindAppBar: true,
+      appBar: const CustomAppBar(title: 'Register'),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [AppColors.purple, AppColors.blue],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: BlocBuilder<AuthCubit, AuthState>(
+          builder: (context, state) {
+            // Aquí podrías reaccionar a estados de carga o error durante el registro
+            return const _RegisterForm();
+          },
+        ),
       ),
     );
   }

@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:nublo/core/constants/app_colors.dart';
+import 'package:nublo/core/widgets/appbar/custom_app_bar.dart';
 import '../../../domain/entities/home/home.dart';
 import '../../cubit/home/home_cubit.dart';
 import '../../cubit/home/home_state.dart';
@@ -25,18 +27,26 @@ class _HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Homes'),
-      ),
-      body: BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state) {
-          return state.when(
-            initial: () => const SizedBox(),
-            loading: () => const Center(child: CircularProgressIndicator()),
-            success: (items) => _HomeList(items: items),
-            error: (message) => Center(child: Text(message)),
-          );
-        },
+      extendBodyBehindAppBar: true,
+      appBar: const CustomAppBar(title: 'Homes'),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [AppColors.purple, AppColors.blue],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: BlocBuilder<HomeCubit, HomeState>(
+          builder: (context, state) {
+            return state.when(
+              initial: () => const SizedBox(),
+              loading: () => const Center(child: CircularProgressIndicator()),
+              success: (items) => _HomeList(items: items),
+              error: (message) => Center(child: Text(message)),
+            );
+          },
+        ),
       ),
     );
   }

@@ -1,10 +1,14 @@
-import 'package:flutter/material.dart';
+    import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+
 
 /// Class that contains all the app's colors
 class AppColors {
   AppColors._();
 
-  // Primary colors
-  static const Color primary = Colors.blue;
-  static const Color secondary = Colors.blueAccent;
+  static Color purple = HexColor('#fffbd5');
+  static Color blue = HexColor('#b20a2c');
+
 }
+
+
