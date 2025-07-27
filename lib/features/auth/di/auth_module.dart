@@ -38,6 +38,10 @@ abstract class AuthModule {
   CheckAuthStatusUseCase provideCheckAuthStatusUseCase(AuthRepository repository) =>
       CheckAuthStatusUseCase(repository);
 
+  @lazySingleton
+  LoginWithAuth0UseCase provideLoginWithAuth0UseCase(AuthRepository repository) =>
+      LoginWithAuth0UseCase(repository);
+
   @injectable
   AuthCubit provideAuthCubit(
     LoginWithAuth0UseCase loginUseCase,

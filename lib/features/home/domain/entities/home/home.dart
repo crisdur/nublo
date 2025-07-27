@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:latlong2/latlong.dart';
 
 part 'home.freezed.dart';
 
@@ -12,7 +13,6 @@ abstract class Home with _$Home {
     String? localizedCategory,
     String? phoneNumber,
     String? website,
-    double? latitude,
-    double? longitude,
+    required LatLng location,
   }) = _Home;
 } 
