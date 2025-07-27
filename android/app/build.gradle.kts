@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.crisdur.nublo"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -28,6 +28,12 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        
+        // Auth0 configuration placeholders
+        manifestPlaceholders += mapOf(
+            "auth0Domain" to "dev-xo8bdazrerzn5lhb.us.auth0.com",
+            "auth0Scheme" to "com.crisdur.nublo"
+        )
     }
 
     buildTypes {

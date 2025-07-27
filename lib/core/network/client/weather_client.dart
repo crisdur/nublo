@@ -1,14 +1,15 @@
 import 'package:dio/dio.dart';
 
-class Client {
+class WeatherClient {
   late final Dio dio;
+  final String apiKey;
 
-  Client() {
+  WeatherClient({required this.apiKey}) {
     dio = Dio(
       BaseOptions(
-        baseUrl: '', 
-        connectTimeout: const Duration(seconds: 5),
-        receiveTimeout: const Duration(seconds: 3),
+        baseUrl: 'https://api.openweathermap.org/data/2.5/',
+        connectTimeout: const Duration(seconds: 10),
+        receiveTimeout: const Duration(seconds: 10),
         headers: <String, dynamic>{
           'Content-Type': 'application/json',
           'Accept': 'application/json',

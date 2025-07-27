@@ -8,12 +8,16 @@ ThemeData themeData = ThemeData(
     seedColor: Colors.white,
     primary: AppColors.purple,
     secondary: AppColors.blue,
-    brightness: Brightness.dark,
+    brightness: Brightness.light,
+  ),
+  dialogTheme: DialogThemeData(
+    backgroundColor: Colors.white,
+    surfaceTintColor: Colors.white,
   ),
   progressIndicatorTheme: const ProgressIndicatorThemeData(
     color: Colors.white,
   ),
   textTheme: GoogleFonts.latoTextTheme(
-    ThemeData(brightness: Brightness.dark).textTheme,
+    ThemeData(brightness: Brightness.light).textTheme,
   ),
 );

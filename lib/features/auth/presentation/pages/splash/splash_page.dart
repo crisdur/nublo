@@ -14,8 +14,8 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AuthCubit>(
-      create: (_) => GetIt.I<AuthCubit>()..checkAuthStatus(),
+    return BlocProvider<AuthCubit>.value(
+      value: GetIt.I<AuthCubit>()..checkAuthStatus(),
       child: const _SplashView(),
     );
   }
@@ -28,27 +28,36 @@ class _SplashView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [AppColors.purple, AppColors.blue],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
+        decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
         child: BlocListener<AuthCubit, AuthState>(
           listener: (context, state) {
             switch (state.status) {
               case AuthStatus.authenticated:
-                context.router.replace(const HomeRoute());
+                if (state.user != null) {
+                  context.router.replace(const HomeRoute());
+                } else {
+                  context.router.replace(const LoginRoute());
+                }
                 break;
+              case AuthStatus.error:
               case AuthStatus.unauthenticated:
                 context.router.replace(const LoginRoute());
                 break;
+              case AuthStatus.loading:
               case AuthStatus.initial:
                 break;
             }
           },
-          child: const Center(child: CircularProgressIndicator()),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.cloud, color: Colors.white, size: 200),
+                const SizedBox(height: 48),
+                const CircularProgressIndicator(),
+              ],
+            ),
+          ),
         ),
       ),
     );
